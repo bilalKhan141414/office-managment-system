@@ -12,9 +12,11 @@ import { Public } from 'src/decorators/auth-public.decorator';
 import { UserCredentials } from 'src/dtos/auth/user-credentials.dto';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local/local.guard';
+import { RESPONSE_MESSAGES } from '../constants/message.constants';
 
 @Controller('auth')
 export class AuthController {
+  private responseConstants = RESPONSE_MESSAGES.AUTH;
   constructor(
     private authService: AuthService,
     private config: ConfigService,
@@ -28,7 +30,7 @@ export class AuthController {
   ): Promise<{ message: string }> {
     await this.authService.DoSignup(userCreds);
     return {
-      message: 'User Created Successfully',
+      message: this.responseConstants.SIGNUP,
     };
   }
 
@@ -36,7 +38,10 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('/login')
   Login(@Request() req) {
-    return this.authService.DoLogin(req.user);
+    return {
+      message: this.responseConstants.LOGIN,
+      ...this.authService.DoLogin(req.user),
+    };
   }
 
   @Get('/logout')
@@ -45,7 +50,7 @@ export class AuthController {
     await this.blackList.add(req.user.userId);
     const list = await this.blackList.list;
     return {
-      message: 'Logout successfull',
+      message: this.responseConstants.LOGOUT,
       list,
     };
   }

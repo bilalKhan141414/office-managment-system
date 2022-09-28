@@ -13,7 +13,7 @@ export class UserService {
   }
 
   async ValidateUser(email: string, password: string) {
-    const user = await this.userRepo.findOneBy({ email });
+    const user = await this.userRepo.FindUserByEmail(email);
     return user && ValidatePasswordHash(password, user.password) ? user : null;
   }
 }

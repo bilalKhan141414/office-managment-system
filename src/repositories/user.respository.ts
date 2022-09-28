@@ -13,4 +13,8 @@ export class UserRepository extends Repository<UserEntity> {
     const user = this.create(userCreds);
     await this.save(user);
   }
+
+  async FindUserByEmail(email: string): Promise<UserEntity> {
+    return this.findOneBy({ email });
+  }
 }
