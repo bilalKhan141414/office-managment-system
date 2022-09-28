@@ -5,7 +5,7 @@ import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { AllExceptionsFilter } from './exception.filter';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { useFactory } from './config/database.config';
-import { JwtAuthGuard } from './auth/jwt.guard';
+import { JwtAuthGuard } from './auth/jwt/jwt.guard';
 import { BlacklistModule } from './cache/blacklist.module';
 
 @Module({

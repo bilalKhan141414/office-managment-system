@@ -11,7 +11,7 @@ import { BlacklistService } from 'src/cache/blacklist.service';
 import { Public } from 'src/decorators/auth-public.decorator';
 import { UserCredentials } from 'src/dtos/auth/user-credentials.dto';
 import { AuthService } from './auth.service';
-import { LocalAuthGuard } from './local.guard';
+import { LocalAuthGuard } from './local/local.guard';
 
 @Controller('auth')
 export class AuthController {

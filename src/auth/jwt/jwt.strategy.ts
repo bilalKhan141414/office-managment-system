@@ -19,7 +19,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(payload: any) {
     const isUserBlackListed = await this.blacklist.verify(payload.sub);
-    console.log('payload::validate', isUserBlackListed, payload);
     if (isUserBlackListed) {
       throw new UnauthorizedException();
     }

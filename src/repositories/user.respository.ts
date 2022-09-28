@@ -1,6 +1,6 @@
 import { DataSource, Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
-import { UserEntity } from '../auth/user.entity';
+import { UserEntity } from '../entities/user.entity';
 import { UserCredentials } from 'src/dtos/auth/user-credentials.dto';
 
 @Injectable()

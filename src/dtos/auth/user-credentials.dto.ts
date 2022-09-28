@@ -8,7 +8,6 @@ import {
 
 export class UserCredentials {
   @IsString()
-  @MinLength(1)
   name: string;
 
   @IsString()
