@@ -7,6 +7,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { useFactory } from './config/database.config';
 import { JwtAuthGuard } from './auth/jwt/jwt.guard';
 import { BlacklistModule } from './cache/blacklist.module';
+import { JwtService } from '@nestjs/jwt';
+import { EmployeeModule } from './employee/employee.module';
+import { ProjectModule } from './project/project.module';
+import { DesignationModule } from './designation/designation.module';
+import { EmployeeProjectModule } from './employees-projects/employees-projects.module';
 
 @Module({
   imports: [
@@ -22,6 +27,10 @@ import { BlacklistModule } from './cache/blacklist.module';
     }),
     BlacklistModule,
     AuthModule,
+    EmployeeModule,
+    ProjectModule,
+    DesignationModule,
+    EmployeeProjectModule,
   ],
   controllers: [],
   providers: [
@@ -33,6 +42,7 @@ import { BlacklistModule } from './cache/blacklist.module';
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
     },
+    JwtService,
   ],
 })
 export class AppModule {}

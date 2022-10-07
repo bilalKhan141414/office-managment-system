@@ -21,7 +21,8 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'prettier/prettier': ['error', { "endOfLine": "auto"}, { usePrettierrc: true }],  // Use our .prettierrc file as source
-    'block-spacing':'always'
+    'prettier/prettier': ['error', { 'endOfLine': 'auto'}, { usePrettierrc: true }],  // Use our .prettierrc file as source
+    'no-duplicate-imports':['error', { 'includeExports': true }],
+    'camelcase':['error', {'properties': 'always', 'ignoreDestructuring': true}],
   },
 };

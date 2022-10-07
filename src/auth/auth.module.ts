@@ -19,6 +19,7 @@ import { LocalStrategy } from './local/local.strategy';
           expiresIn: config.get<string>('JWT_EXPIRATION_TIME'),
         },
       }),
+
       imports: [ConfigModule],
       inject: [ConfigService],
     }),

@@ -1,11 +1,6 @@
-import {
-  CacheModule,
-  CacheModuleOptions,
-  CACHE_MANAGER,
-  Module,
-} from '@nestjs/common';
+import { CacheModule, CacheModuleOptions, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { BLACK_LIST_PROVIDER } from 'src/constants/provider.contants';
+import { SettingsModule } from 'src/settings/settings.module';
 import { BlacklistService } from './blacklist.service';
 
 @Module({
@@ -18,6 +13,7 @@ import { BlacklistService } from './blacklist.service';
       }),
       isGlobal: true,
     }),
+    SettingsModule,
   ],
   providers: [BlacklistService],
   exports: [BlacklistService],

@@ -37,16 +37,16 @@ export class AuthController {
   @Public()
   @UseGuards(LocalAuthGuard)
   @Post('/login')
-  Login(@Request() req) {
+  async Login(@Request() req) {
+    const token = await this.authService.DoLogin(req.user);
     return {
       message: this.responseConstants.LOGIN,
-      ...this.authService.DoLogin(req.user),
+      ...token,
     };
   }
 
   @Get('/logout')
   async Logout(@Request() req) {
-    console.log('req.user', req.user);
     await this.blackList.add(req.user.userId);
     const list = await this.blackList.list;
     return {
@@ -56,9 +56,8 @@ export class AuthController {
   }
 
   @Get('/profile')
-  async Profile(@Request() req) {
+  async Profile() {
     const list = await this.blackList.list;
-    console.log(list);
     return { list };
   }
 }

@@ -1,5 +1,5 @@
 export class CreateSettingsDto {
-  name: string;
-  desciption?: string;
-  value: string;
+  name?: string;
+  description?: string;
+  value: string | string[];
 }

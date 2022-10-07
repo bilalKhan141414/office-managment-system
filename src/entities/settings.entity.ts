@@ -1,4 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity({
   name: 'tbl_settings',
@@ -13,16 +19,12 @@ export class SettingsEntity {
   @Column()
   description: string;
 
-  @Column()
-  value: string;
+  @Column({ type: 'text', array: true })
+  value: string | string[];
 
-  @Column({
-    default: () => 'NOW::DATE()',
-  })
+  @CreateDateColumn()
   createdAt: Date;
 
-  @Column({
-    default: () => 'NOW::DATE()',
-  })
+  @UpdateDateColumn()
   updatedAt: Date;
 }

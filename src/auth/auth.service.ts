@@ -24,9 +24,9 @@ export class AuthService {
   async DoLogin(user: { username: string; userId: string }) {
     const payload = { username: user.username, sub: user.userId };
     await this.RemoveFromBlackList(user.userId);
-    const access_token = this.jwtService.sign(payload);
+    const accessToken = this.jwtService.sign(payload);
     return {
-      access_token,
+      accessToken,
     };
   }
 }
